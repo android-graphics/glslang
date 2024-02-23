@@ -52,7 +52,7 @@ jobs:
           python update_glslang_sources.py
           mkdir build
           cd build
-          cmake ../ -DRelease -DCMAKE_INSTALL_PREFIX=./install
+          cmake ../ -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=./install
           cmake --build . --config Release -j 12
 
       - name: Archive results
