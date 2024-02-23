@@ -51,7 +51,8 @@ jobs:
         run: |
           mkdir build
           cd build
-          cmake ../ -DSPIRV_CROSS_ENABLE_TESTS=OFF -DCMAKE_BUILD_TYPE=Release
+          python update_glslang_sources.py
+          cmake ../ -DRelease -DCMAKE_INSTALL_PREFIX=./install
           cmake --build . --config Release -j 12
 
       - name: Archive results
