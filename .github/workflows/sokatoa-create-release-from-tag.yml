@@ -62,6 +62,7 @@ jobs:
           mkdir ${{ github.event.inputs.RELEASE_TAG }}
           cp build/install/bin/glslang ${{ github.event.inputs.RELEASE_TAG }}
           cp build/install/bin/glslangValidator ${{ github.event.inputs.RELEASE_TAG }}
+          cp -r SPIRV ${{ github.event.inputs.RELEASE_TAG }}
           tar -czvf ${{ github.event.inputs.RELEASE_TAG }}_${{ runner.os }}.tar.gz -C ${{ github.event.inputs.RELEASE_TAG }} `ls -A ${{ github.event.inputs.RELEASE_TAG }}`
 
       - name: Archive results
@@ -70,7 +71,7 @@ jobs:
         run: |
           mkdir ${{ github.event.inputs.RELEASE_TAG }}
           cp build/install/bin/glslang.exe ${{ github.event.inputs.RELEASE_TAG }}
-          cp build/install/bin/glslangValidator.exe ${{ github.event.inputs.RELEASE_TAG }}
+          cp -r SPIRV ${{ github.event.inputs.RELEASE_TAG }}
           7z a -r ${{ github.event.inputs.RELEASE_TAG }}.zip ./${{ github.event.inputs.RELEASE_TAG }}/*
 
       - name: Upload artifacts
